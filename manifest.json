@@ -1,0 +1,44 @@
+{
+  "update_url": "https://clients2.google.com/service/update2/crx",
+  "name": "Upclip",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "description":
+    "Capture parts of a page or entire sites and save into your directory!",
+  "browser_action": {
+     "default_icon"  : "logo.png",
+     "default_popup" : "popup/popup.html",
+     "default_title" : "Upclip"
+  },
+  "permissions": ["activeTab",
+                  "storage","http://localhost/test.php",
+                  "contextMenus",
+                   "tabs",
+                  "tabCapture",
+                  "https://app.upclip.com/activity", 
+                  "tabs",
+                  "privacy",
+                   "desktopCapture"
+                   
+                ],
+  "background": {
+    "scripts": ["lib/jquery.min.js", "js/background.js"]
+  },
+
+    "content_scripts": [
+        {
+        "matches": ["<all_urls>"],
+        
+        "js": [
+               "js/html2canvas.min.js",
+               "js/content.js"
+              ],
+        "run_at": "document_end"
+        }
+    ],
+    "icons": {
+          "16": "logo.png",
+          "48": "logo.png",
+          "128": "logo.png"
+        }
+}

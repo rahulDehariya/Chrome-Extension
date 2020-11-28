@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset=utf-8>
+  <title>Upclip</title>
+  <style>
+    body {
+      font: normal 12px/16px helvetica, aria, sans-serif;
+      /*background:#777*/
+      background: #fff;
+      width: 310px;
+      margin: 0;
+    }
+
+    div,
+    p {
+      margin: 0;
+      padding: 0;
+    }
+
+    #clr {
+      overflow: hidden;
+      margin: 0px -5px 0px -5px;
+      height: auto;
+    width: 100%;
+    float: left;
+    }
+
+    .left {
+      float: left;
+    }
+
+    .right {
+      float: right;
+    }
+
+    a {
+      color: #3681b3;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #265c80;
+    }
+
+    a:active {
+      color: #000;
+    }
+
+    #wrap {
+
+      padding-top: 9px;
+      font-size: 12px;
+      color: #555;
+    }
+
+    #wrap>div {
+      display: none;
+    }
+
+    #wrap>#loading {
+      display: block;
+    }
+
+    #loading .loader {
+      position: relative;
+      border-top: 1px dotted #000;
+      /*height: 9px;*/
+      opacity: 0;
+    }
+
+    #loading .bar {
+      position: absolute;
+      top: -21px;
+      left: 0;
+      height: 30px;
+      width: 0%;
+      opacity: 0;
+      /*background: #fff url(../images/loader.gif) scroll no-repeat center right;*/
+    }
+
+    p {
+      word-wrap: break-word;
+    }
+button:focus {
+  outline:none;
+}
+    button {
+      text-align: left;
+      margin-top: 1px;
+      background: #fff;
+      transition: background .15s ease-in-out;
+      -moz-transition: background .15s ease-in-out;
+      -webkit-transition: background .15s ease-in-out;
+      -webkit-border-radius: 4;
+      -moz-border-radius: 4;
+      font-size: 12px;
+      padding: 4px 0px 4px 2px;
+      margin: 0px 15px 2px 0px;
+      border: solid #ccc 1px;
+      line-height: 26px;
+      text-decoration: none;
+      width: 100%;
+      font-size: 13px;
+    float: left;
+    padding: 5px 10px;
+    border-bottom: 1px solid #ddd;
+    color: #000;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    }
+    button span{
+      float: right;
+    color: #3c72ec;
+    background: #efeaea;
+    padding: 2px 12px 3px;
+    }
+    button span img{
+      width: 15px;
+    }
+    button:hover {
+      text-decoration: none;
+    }
+
+    button em {
+      vertical-align: middle;
+      margin: 0 5px;
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+    }
+
+    button em.leftImage {
+      background-image: url(../img/1.png);
+      background-position: 3px 6px;
+    float: left;
+    background-repeat: no-repeat;
+    background-size: 15px;
+    }
+
+.a_btn em {
+      vertical-align: middle;
+      margin: 0 5px;
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+    }
+.a_btn {
+      text-align: left;
+      margin-top: 1px;
+      background: #fff;
+      transition: background .15s ease-in-out;
+      -moz-transition: background .15s ease-in-out;
+      -webkit-transition: background .15s ease-in-out;
+      -webkit-border-radius: 4;
+      -moz-border-radius: 4;
+      font-size: 12px;
+      padding: 4px 0px 4px 2px;
+      margin: 0px 1px 2px 0px;
+      border: solid #ccc 1px;
+      line-height: 26px;
+      text-decoration: none;
+      width: 92%;
+      font-size: 13px;
+    float: left;
+    padding: 5px 10px;
+    border-bottom: 1px solid #ddd;
+    color: #000;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    }
+    .a_btn em.crntView {
+      background-image: url(../img/2.png);
+      background-position: 3px 6px;
+    float: left;
+    background-repeat: no-repeat;
+    background-size: 15px;
+    }
+     .a_btn span{
+      float: right;
+    color: #3c72ec;
+    background: #efeaea;
+    padding: 2px 12px 3px;
+    }
+    .a_btn span img{
+      width: 15px;
+    }
+
+    .a_btn em.crpView {
+      background-image: url(../img/3.png);
+      background-position: 3px 6px;
+    float: left;
+    background-repeat: no-repeat;
+    background-size: 15px;
+    }
+
+    button em.options {
+      background-position: -96px 0px;
+      background-image: url(../img/options/icon_options2.png);
+      float: left;
+    }
+
+    .about-author {
+      margin-top: 0px;
+      right: 5px;
+      font-size: 10px;
+    }
+
+    .about-author>a {
+      padding: 1px 3px;
+      margin: 0 1px;
+      color: #1E90FF;
+    }
+
+    .about-author:hover {}
+
+    .about-author:hover>a {
+      padding: 1px 3px;
+      margin: 0 1px;
+      color: #bbb;
+      color: #fafafa;
+      background: rgba(25, 25, 25, 0.5);
+      background: #EF8319;
+      border-radius: 2px;
+    }
+
+    .title-header {
+      padding: 0px;
+      margin: 10px 0px 10px 5px;
+    }
+
+    .title-header:before {
+      position: relative;
+      top: 5px;
+
+      content: url('../img/icon/icon24.png');
+    }
+    .main_btn a {
+    border: none;
+    background: none;
+    font-size: 14px;
+    padding: 12px 0;
+    color: #3c72ec;
+    text-align: center;
+    float: left;
+    width:100%;
+}
+.overlay_flight_traveldil {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay_flight_traveldil:target {
+  visibility: visible;
+  opacity: 1;
+}
+.main:target{
+  visibility: hidden;
+}
+.main{
+  visibility: visible;
+}
+.popup_flight_travlDil {
+    padding: 1px 0px;
+    background: #fff;
+    width: 100%;
+    position: relative;
+    transition: all 2s ease-in-out;
+    height: 100%;
+}
+/*.popup_flight_travlDil .close_flight_travelDl {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+/*.popup_flight_travlDil .content_flightht_travel_dil {
+  max-height: 30%;
+  overflow: auto;
+}*/
+.content_popup h5{
+    font-size: 13px;
+    border-bottom: 1px solid #ddd;
+    padding: 0px 10px 15px;
+    color: #5a5a5a;
+    margin-top: 15px;
+    margin-bottom: 9px;
+  }
+  .content_popup h5 span{
+    float: right;
+    color: #576EE8;
+    background: #ececec;
+    padding: 4px 13px 3px;
+    border-radius: 20px;
+    margin-top: -8px;
+  }
+  .content_popup form{
+    padding: 0 12px;
+  }
+  .content_popup input{
+    width: 92%;
+    padding: 12px 10px;
+    float: left;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .content_popup select{
+    width: 100%;
+    padding: 12px 6px;
+    float: left;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .modal2-footer a{
+    background: #576EE8;
+    color: #fff;
+    border-radius: 0;
+    height: 30px;
+    text-align: center;
+    float: left;
+    width: 100%;
+    font-size: 13px;
+    padding-top: 16px;
+  }
+  </style>
+</head>
+  <body>
+    <div class="popup_flight_travlDil">
+    <!-- <h2>Fare Rules</h2>
+    <a class="close_flight_travelDl" href="#">&times;</a> -->
+    <div class="content_popup">
+      <h5>Add to Upclip <span>Skip</span></h5>
+      
+       <form>
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Enter tags">
+  </div>
+  <div class="form-group">
+    <select class="form-control" id="projectOption">
+      <option>Select project</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+        </form>
+      </div>
+      <div class="modal-footer modal2-footer">
+        <a type="button"  class="btn close_flight_travelDl" id="saveProject">Save </a>
+      </div>
+    </div>
+  <script src="project.js"></script>
+  </body>
+</html> 
